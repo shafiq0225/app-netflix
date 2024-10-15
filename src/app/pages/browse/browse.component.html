@@ -1,1 +1,23 @@
-<p>browse works!</p>
+<div class="browse-page">
+    <app-header></app-header>
+    <div class="banner">
+        <img class="banner-img"
+            src="https://occ-0-2164-64.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABawPQVVeGpVkfePcJq50aEigvkQrG_31aljf4pPga_rpgY-61Kiv1EC6UttV7oO0rF5WcUbV7fuY2U9X6xmqSd22d2Yne45iV1Yh.jpg?r=7d2"
+            alt="movie-image" />
+        <div class="banner-movie-info">
+            <h4>Movie Title</h4>
+            <p>movie description</p>
+            <div>
+                <button>Play</button>
+                <button>More Info</button>
+            </div>
+        </div>
+    </div>
+    <div class="movie-categories">
+        <app-movie-category [title]="'Popular'" [movieList]="popularMovie"></app-movie-category>
+        <app-movie-category [title]="'Top Rated'" [movieList]="topRatedMovie"></app-movie-category>
+        <app-movie-category [title]="'Upcoming'" [movieList]="upcomingMovie"></app-movie-category>
+        <app-movie-category [title]="'Now Playing'" [movieList]="nowPlayingMovie"></app-movie-category>
+    </div>
+</div>
+

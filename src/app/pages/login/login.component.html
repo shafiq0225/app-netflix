@@ -1,19 +1,19 @@
 <div class="bg-black h-screen" [ngStyle]="{'background-image': 'url('+ bgUrl+')'}">
-    <div class="header">
-        <img [src]="logoUrl" alt="logo" class="w-52">
-    </div>
+    <app-header></app-header>
     <div class="login-container">
         <div class="login-card">
             <h2 class="heading">Sign In</h2>
-            <div class="form-field">
-                <input type="text" class="input" placeholder="Email or Phone number">
-            </div>
-            <div class="form-field">
-                <input type="text" class="input" placeholder="Password">
-            </div>
-            <div class="action-field">
-                <button class="login-btn">Sign In</button>
-            </div>
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-field">
+                    <input type="text" class="input" name="email" [(ngModel)]="email" placeholder="Email or Phone number">
+                </div>
+                <div class="form-field">
+                    <input type="password" class="input" name="password" [(ngModel)]="password" placeholder="Password">
+                </div>
+                <div class="action-field">
+                    <button class="login-btn">Sign In</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
