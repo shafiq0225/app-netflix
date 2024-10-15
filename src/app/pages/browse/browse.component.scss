@@ -17,6 +17,37 @@
       flex-direction: column;
       top: 40%;
       padding-left: 2rem;
+      max-width: 600px;
+      .banner-heading {
+        font-size: 48px;
+        font-weight: bold;
+      }
+      .banner-description {
+        font-size: 24px;
+      }
+      .banner-action {
+        display: flex;
+        padding: 10px 20px;
+        gap: 32px;
+        .play-btn {
+          background-color: white;
+          color: black;
+          padding: 12px 12px;
+          font-size: 20px;
+          font-weight: bold;
+          border-radius: 4px;
+          width: 150px;
+        }
+        .info-btn {
+          background-color: #958f8f;
+          color: white;
+          padding: 12px 12px;
+          font-weight: bold;
+          font-size: 20px;
+          border-radius: 4px;
+          width: 200px;
+        }
+      }
     }
   }
 }
