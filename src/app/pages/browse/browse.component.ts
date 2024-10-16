@@ -6,6 +6,7 @@ import { MovieCategoryComponent } from "../../components/movie-category/movie-ca
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../types/movies';
 import { tmdbConfig } from '../../constants/config';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-browse',
@@ -16,32 +17,36 @@ import { tmdbConfig } from '../../constants/config';
 })
 export class BrowseComponent implements OnInit {
   movieService = inject(MovieService);
+  public domSanitizer = inject(DomSanitizer);
   popularMovie: Movie[] = [];
   topRatedMovie: Movie[] = [];
   nowPlayingMovie: Movie[] = [];
   upcomingMovie: Movie[] = [];
   bannerMovie!: Movie;
-  tmdbConfig = tmdbConfig
+  tmdbConfig = tmdbConfig;
+
+
   ngOnInit(): void {
-    this.movieService.getPopularMovies().subscribe((res: any) => {
-      this.popularMovie = res.results;
+    this.movieService.getPopularMovies().subscribe((result: any) => {
+      this.popularMovie = result.results;
       this.bannerMovie = this.popularMovie[0];
-      console.log(res);
+
+      this.movieService.getMoviesVideos(this.bannerMovie.id).subscribe((response: any) => {
+        console.log(response);        
+        this.bannerMovie.video_key = response.results.find(((x: { site: string; }) => x.site == "YouTube")).key      
+      });
     });
 
     this.movieService.getTopRatedMovies().subscribe((res: any) => {
       this.topRatedMovie = res.results;
-      console.log(res);
     });
 
     this.movieService.getNowPlayingMovies().subscribe((res: any) => {
       this.nowPlayingMovie = res.results;
-      console.log(res);
     });
 
     this.movieService.getUpcomingMovies().subscribe((res: any) => {
       this.upcomingMovie = res.results;
-      console.log(res);
     });
   }
 }
